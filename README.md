@@ -9,7 +9,7 @@
 	// Requête (méthode http + url) : 
 	// Corps : 
 	// Réponses (à spécifier par code) :
-	// - code : 
+	// - code : <livre><titre>Services9.9</titre></livre>
 	Optional<HyperLien<Livre>> chercher(Livre l);
 
 
@@ -27,10 +27,13 @@
 	@GET
 	@Path(SOUSCHEMIN_CATALOGUE)
 	@Produces(TYPE_MEDIA)
-	// Requête (méthode http + url) : 
-	// Corps : 
+	// Requête (méthode http + url) : PUT http://localhost:8081/PORTAIL/portail/catalogue
+	// Corps : rien
 	// Réponses (à spécifier par code) :
 	// - code : 
+	<liste>
+		<hyperlien uri="http://localhost:8081/bib{x}/BIBLIO/{y}"/> <!-- {x} est l'id de la bibliothèque; {y} est l'id du livre -->
+	</liste>
 	HyperLiens<Livre> repertorier();
 
 - Archive 
