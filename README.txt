@@ -32,7 +32,8 @@
 	// Réponses (à spécifier par code) :
 	// - code : 
 	<liste>
-		<hyperlien uri="http://localhost:8081/bib{x}/BIBLIO/{y}"/> <!-- {x} est l'id de la bibliothèque; {y} est l'id du livre -->
+		<hyperlien uri="http://localhost:8081/bib{x}/BIBLIO/{y}"/> 
+		<!-- {x} est l'id de la bibliothèque; {y} est l'id du livre -->
 	</liste>
 	HyperLiens<Livre> repertorier();
 
