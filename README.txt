@@ -6,7 +6,7 @@
 	@Produces(TYPE_MEDIA)
 	@Consumes(TYPE_MEDIA)
 	@ReponsesPUTOption
-	// Requête (méthode http + url) : GET http://localhost:8081/PORTAIL/portail
+	// Requête (méthode http + url) : PUT http://localhost:8081/PORTAIL/portail
 	// Corps : 
 	<livre>
 		<titre>Services0.0</titre>
@@ -21,10 +21,13 @@
 	@Path(JAXRS.SOUSCHEMIN_ASYNC)
 	@Consumes(JAXRS.TYPE_MEDIA)
 	@Produces(JAXRS.TYPE_MEDIA)
-	// Requête (méthode http + url) : 
+	// Requête (méthode http + url) : PUT http://localhost:8081/PORTAIL/portail/async
 	// Corps : 
+	<livre>
+		<titre>Services0.0</titre>
+	</livre>
 	// Réponses (à spécifier par code) :
-	// - code : 
+	// - code : REQUEST FAILED (500) <!-- il n'y a pas encore d'algorithme de recherche implémenté -->
 	Future<Optional<HyperLien<Livre>>> chercherAsynchrone(Livre l, @Suspended final AsyncResponse ar);
 
 	@GET
