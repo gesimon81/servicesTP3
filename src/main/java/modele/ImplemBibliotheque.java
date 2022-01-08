@@ -56,11 +56,13 @@ public class ImplemBibliotheque implements Bibliotheque {
 
 	@Override
 	public Livre sousRessource(IdentifiantLivre id) {
+		System.out.println("sous-ressource");
 		return catalogue.get(id);
 	}
 
 	@Override
 	public Livre getRepresentation(IdentifiantLivre id) {
+		System.out.println("représentation");
 		return catalogue.get(id);
 	}
 	

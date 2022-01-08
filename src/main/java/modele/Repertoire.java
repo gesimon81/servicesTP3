@@ -27,7 +27,6 @@ public interface Repertoire {
 	@ReponsesPUTOption
 	Optional<HyperLien<Livre>> chercher(Livre l);
 
-
 	@PUT
 	@ReponsesPUTOption
 	@Path(JAXRS.SOUSCHEMIN_ASYNC)
