@@ -6,10 +6,13 @@
 	@Produces(TYPE_MEDIA)
 	@Consumes(TYPE_MEDIA)
 	@ReponsesPUTOption
-	// Requête (méthode http + url) : 
+	// Requête (méthode http + url) : GET http://localhost:8081/PORTAIL/portail
 	// Corps : 
+	<livre>
+		<titre>Services0.0</titre>
+	</livre>
 	// Réponses (à spécifier par code) :
-	// - code : <livre><titre>Services9.9</titre></livre>
+	// - code : REQUEST FAILED (500) <!-- il n'y a pas encore d'algorithme de recherche implémenté -->
 	Optional<HyperLien<Livre>> chercher(Livre l);
 
 
