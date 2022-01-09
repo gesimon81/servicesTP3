@@ -1,25 +1,25 @@
-_id: req_53382871442748dea693ca5387f34235
+_id: req_156ac9827628469aa6fbc92c3baf0933
 type: Request
 parentId: fld_ea128d0c80a347c4bd69eba418d39f97
-modified: 1641747344070
-created: 1641734846129
-url: http://localhost:8081/PortailServeur2/portail
-name: Chercher
+modified: 1641747342576
+created: 1641744801357
+url: http://localhost:8081/PortailServeur2/portail/admin/recherche
+name: AdminAlgo
 description: ""
 method: PUT
 body:
   mimeType: application/xml
   text: |-
-    <livre>
-    	<titre>Services0.5</titre>
-    </livre>
+    <algo>
+    	<nom>{{ _['algo-id'] }}</nom>
+    </algo> 
 parameters: []
 headers:
   - name: Content-Type
     value: application/xml
-    id: pair_bf943fef9bbf452d966e24931bc64b08
+    id: pair_b9d4492dcd304ddba92433c39da65468
 authentication: {}
-metaSortKey: -1641735041086
+metaSortKey: -1641735041186
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true
