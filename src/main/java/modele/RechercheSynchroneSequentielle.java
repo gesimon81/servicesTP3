@@ -9,22 +9,27 @@ import infrastructure.jaxrs.HyperLien;
 
 public class RechercheSynchroneSequentielle extends RechercheSynchroneAbstraite{
 
+	private NomAlgorithme nomAlgo;
+	
+	public RechercheSynchroneSequentielle(String nomAlgo) {
+		this.nomAlgo = new ImplemNomAlgorithme(nomAlgo);
+	}
+	
 	@Override
 	public Optional<HyperLien<Livre>> chercher(Livre l, List<HyperLien<Bibliotheque>> bibliotheques, Client client) {
-		// TODO Auto-generated method stub
-		return null;
+		for(int i = 0;i < bibliotheques.size();i++) {
+			Optional<HyperLien<Livre>> lienLivre = super.rechercheSync(bibliotheques.get(i), l, client);
+			if(!lienLivre.equals(Optional.empty())) {
+				return lienLivre;
+			}
+		}
+		return Optional.empty();
 	}
 
 	@Override
 	public NomAlgorithme nom() {
-		// TODO Auto-generated method stub
-		return null;
+		return nomAlgo;
 	}
 
-	@Override
-	protected Optional<HyperLien<Livre>> rechercheSync(HyperLien<Bibliotheque> h, Livre l, Client client) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

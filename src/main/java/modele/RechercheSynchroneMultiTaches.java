@@ -21,10 +21,5 @@ public class RechercheSynchroneMultiTaches extends RechercheSynchroneAbstraite{
 		return null;
 	}
 
-	@Override
-	protected Optional<HyperLien<Livre>> rechercheSync(HyperLien<Bibliotheque> h, Livre l, Client client) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
 }

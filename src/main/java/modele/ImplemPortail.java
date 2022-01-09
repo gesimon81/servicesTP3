@@ -34,9 +34,15 @@ public class ImplemPortail implements Portail {
 		this.bibliotheques = Initialisation.bibliotheques();
 		this.tableAlgos = new ConcurrentHashMap<>();
 		this.algoRecherche = null;
-		/*
-		 		new RechercheSynchroneSequentielle("recherche sync seq");
 		
+		// Initialisation requise au moins une fois
+		this.algoRecherche = new RechercheSynchroneSequentielle("recherche sync seq");
+		
+		// ajout dans la table, algo et nom étant des variables locales
+		tableAlgos.put(this.algoRecherche.nom(), this.algoRecherche);
+		
+		
+		/*
 		AlgorithmeRecherche algo = this.algoRecherche;
 		NomAlgorithme nom = this.algoRecherche.nom();
 		tableAlgos.put(nom, algo);
