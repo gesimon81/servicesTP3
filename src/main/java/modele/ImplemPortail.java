@@ -29,17 +29,19 @@ public class ImplemPortail implements Portail {
 	private AlgorithmeRecherche algoRecherche;
 
 	public ImplemPortail() {
-		System.out.println("Déploiement de " + this + " : " + this.getClass());
+		System.out.println("DÃ©ploiement de " + this + " : " + this.getClass());
 		this.client = Orchestrateur.clientJAXRS();
 		this.bibliotheques = Initialisation.bibliotheques();
 		this.tableAlgos = new ConcurrentHashMap<>();
 		this.algoRecherche = null;
 
 		// Initialisation requise au moins une fois
+
 		this.algoRecherche = new RechercheSynchroneSequentielle("recherche sync seq");
 
-		// ajout dans la table, algo et nom �tant des variables locales
+		// ajout dans la table, algo et nom ï¿½tant des variables locales
 		tableAlgos.put(this.algoRecherche.nom(), this.algoRecherche);
+
 		AlgorithmeRecherche algo = this.algoRecherche;
 		NomAlgorithme nom = this.algoRecherche.nom();
 		/*
@@ -68,6 +70,7 @@ public class ImplemPortail implements Portail {
 
 	@Override
 	public Optional<HyperLien<Livre>> chercher(Livre l) {
+		System.out.println("portail.chercher");
 		long temps = System.nanoTime();
 		Optional<HyperLien<Livre>> res = algoRecherche.chercher(l, bibliotheques, client);
 		temps = System.nanoTime() - temps;
@@ -78,8 +81,8 @@ public class ImplemPortail implements Portail {
 	@Override
 	public Future<Optional<HyperLien<Livre>>> chercherAsynchrone(Livre l, AsyncResponse ar) {
 		ImplementationAppelsAsynchrones.rechercheAsynchroneBibliotheque(this, l, ar);
-		return null; // Le résultat n'importe pas mais permet de typer la fonction
-		// côté serveur de la même manière que côté client.
+		return null; // Le rÃ©sultat n'importe pas mais permet de typer la fonction
+		// cÃ´tÃ© serveur de la mÃªme maniÃ¨re que cÃ´tÃ© client.
 	}
 
 	@Override
