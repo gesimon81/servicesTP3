@@ -1,25 +1,20 @@
-_id: req_53382871442748dea693ca5387f34235
+_id: req_de2a4aef3be843b2b6d238f0ba364739
 type: Request
 parentId: fld_95f1c02df8a94e3f86bc292511d6f673
-modified: 1641735079999
-created: 1641734846129
-url: http://localhost:8081/PortailServeur2/portail
-name: Chercher
+modified: 1641734995834
+created: 1641734949425
+url: http://localhost:8090/bib0/bibliotheque/0
+name: Representation
 description: ""
-method: PUT
+method: GET
 body:
   mimeType: application/xml
-  text: |-
-    <livre>
-    	<titre>Services0.5</titre>
-    </livre>
 parameters: []
 headers:
   - name: Content-Type
     value: application/xml
-    id: pair_bf943fef9bbf452d966e24931bc64b08
 authentication: {}
-metaSortKey: -1641734846129
+metaSortKey: -1641734949425
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true
