@@ -7,7 +7,7 @@ import javax.ws.rs.client.Client;
 
 import infrastructure.jaxrs.HyperLien;
 
-public class RechercheSynchroneMultiTaches extends RechercheSynchroneAbstraite{
+public class RechercheSynchroneMultiTaches extends RechercheSynchroneAbstraite implements AlgorithmeRecherche {
 
 	@Override
 	public Optional<HyperLien<Livre>> chercher(Livre l, List<HyperLien<Bibliotheque>> bibliotheques, Client client) {
@@ -21,5 +21,4 @@ public class RechercheSynchroneMultiTaches extends RechercheSynchroneAbstraite{
 		return null;
 	}
 
-	
 }
