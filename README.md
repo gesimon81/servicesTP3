@@ -7,7 +7,8 @@ Groupe TP : Geraud SIMON, Raphael PAINTER, Mael LHOUTELLIER, Simon SASSI
 ## En étudiant le code des interfaces **Bibliotheque** et **Portail** (et de leurs interfaces parentes) ainsi que celui de leurs implémentations, déterminer l'ensemble des requêtes **http** acceptées par ces services. On supposera que la bibliothèque est déployée à l'adresse **BIBLIO** et le portail à l'adresse **PORTAIL**. Placer votre réponse dans un fichier **readme**.
 
 - Répertoire 
-```java{
+
+```java
   /**
 	 * @Requêtes (méthode http + url) : PUT http://PORTAIL/portail ou PUT
 	 *           http://BIBLIOTHEQUE/bibliotheque
