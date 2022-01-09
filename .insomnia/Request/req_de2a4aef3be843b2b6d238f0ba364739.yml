@@ -1,7 +1,7 @@
 _id: req_de2a4aef3be843b2b6d238f0ba364739
 type: Request
-parentId: fld_95f1c02df8a94e3f86bc292511d6f673
-modified: 1641734995834
+parentId: fld_b7192f9c25b342d8af0c41f71ccb0312
+modified: 1641744669161
 created: 1641734949425
 url: http://localhost:8090/bib0/bibliotheque/0
 name: Representation
@@ -13,8 +13,9 @@ parameters: []
 headers:
   - name: Content-Type
     value: application/xml
+    id: pair_9e17702a02054f879c439274e217d263
 authentication: {}
-metaSortKey: -1641734949425
+metaSortKey: -1641735018032
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

@@ -1,0 +1,16 @@
+_id: env_3b8672a18f2a4f8d96ed5d3800761ebf
+type: Environment
+parentId: env_e146ec3fc4f51103cb5d01f24ab03fa9e8b2a8da
+modified: 1641743988718
+created: 1641743919115
+name: TP3
+data:
+  bibliotheque-id: bib0
+  livre-id: "0"
+dataPropertyOrder:
+  "&":
+    - bibliotheque-id
+    - livre-id
+color: "#7d69cb"
+isPrivate: false
+metaSortKey: 1641743919115
