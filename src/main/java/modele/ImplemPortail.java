@@ -1,9 +1,5 @@
 package modele;
 
-import infrastructure.jaxrs.HyperLien;
-import infrastructure.jaxrs.HyperLiens;
-import infrastructure.jaxrs.LienVersRessource;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
@@ -16,9 +12,13 @@ import javax.inject.Singleton;
 import javax.ws.rs.Path;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.container.AsyncResponse;
+
 import configuration.Initialisation;
 import configuration.JAXRS;
 import configuration.Orchestrateur;
+import infrastructure.jaxrs.HyperLien;
+import infrastructure.jaxrs.HyperLiens;
+import infrastructure.jaxrs.LienVersRessource;
 
 @Singleton
 @Path(JAXRS.CHEMIN_PORTAIL)
@@ -27,36 +27,32 @@ public class ImplemPortail implements Portail {
 	private final List<HyperLien<Bibliotheque>> bibliotheques;
 	private final ConcurrentMap<NomAlgorithme, AlgorithmeRecherche> tableAlgos;
 	private AlgorithmeRecherche algoRecherche;
-	
+
 	public ImplemPortail() {
-		System.out.println("Déploiement de " + this + " : " + this.getClass());
+		System.out.println("DÃ©ploiement de " + this + " : " + this.getClass());
 		this.client = Orchestrateur.clientJAXRS();
 		this.bibliotheques = Initialisation.bibliotheques();
 		this.tableAlgos = new ConcurrentHashMap<>();
 		this.algoRecherche = null;
-		
+
 		// Initialisation requise au moins une fois
-		RechercheSynchroneSequentielle algo1 = new RechercheSynchroneSequentielle("recherche sync seq");
-		RechercheSynchroneSequentielle algo2 = new RechercheSynchroneMultiTaches("recherche sync mult taches");
 
-		this.algoRecherche = new RechercheSynchroneMultiTaches("recherche sync mult taches");
+		this.algoRecherche = new RechercheSynchroneSequentielle("recherche sync seq");
 
-		// ajout dans la table, algo et nom �tant des variables locales
+		// ajout dans la table, algo et nom ï¿½tant des variables locales
 		tableAlgos.put(this.algoRecherche.nom(), this.algoRecherche);
-		
-		/*
+
 		AlgorithmeRecherche algo = this.algoRecherche;
 		NomAlgorithme nom = this.algoRecherche.nom();
-		tableAlgos.put(nom, algo);
-		algo = new RechercheSynchroneMultiTaches("recherche sync multi");
-		nom = algo.nom();
-		tableAlgos.put(nom, algo);
-		algo = new RechercheSynchroneStreamParallele("recherche sync stream 8");
-		nom = algo.nom();
-		tableAlgos.put(nom, algo);
-		algo = new RechercheSynchroneStreamRx("recherche sync stream rx");
-		nom = algo.nom();
-		tableAlgos.put(nom, algo);
+		/*
+		 * NomAlgorithme nom = this.algoRecherche.nom(); tableAlgos.put(nom, algo); algo
+		 * = new RechercheSynchroneMultiTaches("recherche sync multi"); nom =
+		 * algo.nom(); tableAlgos.put(nom, algo); algo = new
+		 * RechercheSynchroneStreamParallele("recherche sync stream 8"); nom =
+		 * algo.nom(); tableAlgos.put(nom, algo); algo = new
+		 * RechercheSynchroneStreamRx("recherche sync stream rx"); nom = algo.nom();
+		 * tableAlgos.put(nom, algo);
+		 */
 		algo = new RechercheAsynchroneSequentielle("recherche async seq");
 		nom = algo.nom();
 		tableAlgos.put(nom, algo);
@@ -69,7 +65,7 @@ public class ImplemPortail implements Portail {
 		algo = new RechercheAsynchroneStreamRx("recherche async stream rx");
 		nom = algo.nom();
 		tableAlgos.put(nom, algo);
-		*/
+
 	}
 
 	@Override
@@ -85,8 +81,8 @@ public class ImplemPortail implements Portail {
 	@Override
 	public Future<Optional<HyperLien<Livre>>> chercherAsynchrone(Livre l, AsyncResponse ar) {
 		ImplementationAppelsAsynchrones.rechercheAsynchroneBibliotheque(this, l, ar);
-		return null; 	// Le résultat n'importe pas mais permet de typer la fonction 
-		// côté serveur de la même manière que côté client.
+		return null; // Le rÃ©sultat n'importe pas mais permet de typer la fonction
+		// cÃ´tÃ© serveur de la mÃªme maniÃ¨re que cÃ´tÃ© client.
 	}
 
 	@Override

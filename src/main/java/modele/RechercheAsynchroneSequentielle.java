@@ -1,39 +1,41 @@
 package modele;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.Future;
 
 import javax.ws.rs.client.Client;
-import javax.ws.rs.client.InvocationCallback;
 
 import infrastructure.jaxrs.HyperLien;
+import infrastructure.jaxrs.Outils;
 
-public class RechercheAsynchroneSequentielle extends RechercheAsynchroneAbstraite {
+public class RechercheAsynchroneSequentielle extends RechercheAsynchroneAbstraite implements AlgorithmeRecherche {
+	private NomAlgorithme nomAlgo;
+
+	public RechercheAsynchroneSequentielle(String nomAlgo) {
+		this.nomAlgo = new ImplemNomAlgorithme(nomAlgo);
+	}
 
 	@Override
 	public Optional<HyperLien<Livre>> chercher(Livre l, List<HyperLien<Bibliotheque>> bibliotheques, Client client) {
-		// TODO Auto-generated method stub
+		List<Future<Optional<HyperLien<Livre>>>> promesses = new ArrayList<>();
+		for (HyperLien<Bibliotheque> lien : bibliotheques) {
+			promesses.add(super.rechercheAsync(lien, l, client));
+		}
+
+		for (Future<Optional<HyperLien<Livre>>> promesse : promesses) {
+			Optional<HyperLien<Livre>> result = Outils.remplirPromesse(promesse);
+			if (result != null && result.isPresent()) {
+				return result;
+			}
+		}
 		return null;
 	}
 
 	@Override
 	public NomAlgorithme nom() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	protected Future<Optional<HyperLien<Livre>>> rechercheAsync(HyperLien<Bibliotheque> h, Livre l, Client client) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	protected Future<Optional<HyperLien<Livre>>> rechercheAsyncAvecRappel(HyperLien<Bibliotheque> h, Livre l,
-			Client client, InvocationCallback<Optional<HyperLien<Livre>>> retour) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.nomAlgo;
 	}
 
 }

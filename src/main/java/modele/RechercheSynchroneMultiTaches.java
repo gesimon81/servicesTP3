@@ -14,7 +14,7 @@ import javax.ws.rs.client.Client;
 
 import infrastructure.jaxrs.HyperLien;
 
-public class RechercheSynchroneMultiTaches extends RechercheSynchroneAbstraite{
+public class RechercheSynchroneMultiTaches extends RechercheSynchroneAbstraite implements AlgorithmeRecherche {
 
 private NomAlgorithme nomAlgo;
 private final ExecutorService pool;

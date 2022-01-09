@@ -1,6 +1,5 @@
 package modele;
 
-import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "algo")
@@ -8,16 +7,16 @@ public class ImplemNomAlgorithme implements NomAlgorithme {
 
 	private String nom;
 
-	public ImplemNomAlgorithme() {
-		this.nom = null;
-	}
-
 	public ImplemNomAlgorithme(String nomAlgorithme) {
+		super();
 		this.nom = nomAlgorithme;
 	}
 
+	public ImplemNomAlgorithme() {
+	}
+
 	@Override
-	@XmlAttribute(name = "nom")
+
 	public String getNom() {
 		return this.nom;
 	}
