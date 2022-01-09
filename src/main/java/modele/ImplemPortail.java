@@ -36,11 +36,13 @@ public class ImplemPortail implements Portail {
 		this.algoRecherche = null;
 		
 		// Initialisation requise au moins une fois
-		this.algoRecherche = new RechercheSynchroneSequentielle("recherche sync seq");
-		
+		RechercheSynchroneSequentielle algo1 = new RechercheSynchroneSequentielle("recherche sync seq");
+		RechercheSynchroneSequentielle algo2 = new RechercheSynchroneMultiTaches("recherche sync mult taches");
+
+		this.algoRecherche = new RechercheSynchroneMultiTaches("recherche sync mult taches");
+
 		// ajout dans la table, algo et nom étant des variables locales
 		tableAlgos.put(this.algoRecherche.nom(), this.algoRecherche);
-		
 		
 		/*
 		AlgorithmeRecherche algo = this.algoRecherche;
@@ -72,6 +74,7 @@ public class ImplemPortail implements Portail {
 
 	@Override
 	public Optional<HyperLien<Livre>> chercher(Livre l) {
+		System.out.println("portail.chercher");
 		long temps = System.nanoTime();
 		Optional<HyperLien<Livre>> res = algoRecherche.chercher(l, bibliotheques, client);
 		temps = System.nanoTime() - temps;

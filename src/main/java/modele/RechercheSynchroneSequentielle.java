@@ -30,6 +30,4 @@ public class RechercheSynchroneSequentielle extends RechercheSynchroneAbstraite{
 	public NomAlgorithme nom() {
 		return nomAlgo;
 	}
-
-
 }
