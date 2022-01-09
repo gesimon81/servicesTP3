@@ -9,7 +9,7 @@ Groupe TP : Geraud SIMON, Raphael PAINTER, Mael LHOUTELLIER, Simon SASSI
 - Répertoire 
 
 ```java
-  /**
+   /**
 	 * @Requêtes (méthode http + url) : PUT http://PORTAIL/portail ou PUT
 	 *           http://BIBLIOTHEQUE/bibliotheque
 	 * @Corps ```xml <livre><titre>{t}</titre></livre><!-- {t} est un titre choisi
