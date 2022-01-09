@@ -68,6 +68,8 @@ public class ImplemBibliotheque implements Bibliotheque {
 	
 	@Override
 	public Optional<HyperLien<Livre>> chercher(Livre l) {
+		System.out.println("ImplemBibliotheque.chercher(...)");
+
 		Outils.afficherInfoTache("recherche synchrone");
 		for (ConcurrentMap.Entry<IdentifiantLivre, Livre> couple : catalogue
 				.entrySet()) {
