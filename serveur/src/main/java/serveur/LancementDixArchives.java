@@ -18,7 +18,7 @@ import modele.ImplemLivre;
 
 public class LancementDixArchives {
 
-	public static final int NB_LIVRES = 30000;
+	public static final int NB_LIVRES = 100;
 
 	public static void main(String[] args) {
 		
