@@ -1,0 +1,29 @@
+_id: req_156ac9827628469aa6fbc92c3baf0933
+type: Request
+parentId: fld_ea128d0c80a347c4bd69eba418d39f97
+modified: 1641748664597
+created: 1641744801357
+url: http://localhost:8081/PortailServeur2/portail/admin/recherche
+name: AdminAlgo
+description: ""
+method: PUT
+body:
+  mimeType: application/xml
+  text: |-
+    <algo>
+    	<nom>{{ _['algo-id'] }}</nom>
+    </algo> 
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/xml
+    id: pair_b9d4492dcd304ddba92433c39da65468
+authentication: {}
+metaSortKey: -1641735041186
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global
