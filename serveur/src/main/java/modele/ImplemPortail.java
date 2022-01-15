@@ -74,11 +74,9 @@ public class ImplemPortail implements Portail {
 
 	@Override
 	public Optional<HyperLien<Livre>> chercher(Livre l) {
-		System.out.println("portail.chercher");
 		long temps = System.nanoTime();
 		Optional<HyperLien<Livre>> res = algoRecherche.chercher(l, bibliotheques, client);
 		temps = System.nanoTime() - temps;
-		System.out.println("Temps complet : " + (temps / 1000000) + " - Algorithme : " + this.algoRecherche.nom());
 		return res;
 	}
 
