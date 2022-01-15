@@ -25,8 +25,9 @@ public class AppliCliente {
             "recherche async stream rx"
     };
 
-    public static final int NB_REPETITION = 1000;
-    public static final int NB_LIVRES = 20000; // TODO: appeler bib0/bibliotheque/compter quand fonctionnel
+    public static final int NB_REPETITION = 10;
+    public static final int NB_LIVRES = 10000; // TODO: appeler bib0/bibliotheque/compter quand fonctionnel
+    public static final int NB_BIBLIOTHEQUES = 10;
 
     public static Client clientJAXRS() {
         ClientConfig config = new ClientConfig();
@@ -57,15 +58,20 @@ public class AppliCliente {
 
         // Search for books
         for (int i = 0; i < NB_REPETITION; i++) {
+            long idBib = Math.round(Math.random() * NB_BIBLIOTHEQUES);
             long idLivre = Math.round(Math.random() * NB_LIVRES);
-            clientJAXRS().target("http://localhost:8090/bib0/bibliotheque/" + idLivre).request().get();
+            Response response = clientJAXRS().target("http://localhost:8090/PortailServeur2/portail/").request().put(Entity.xml("<livre><titre>Services" + idBib + "." + idLivre + "</titre></livre>"));
+            System.out.println(response + " " + "<livre><titre>Services" + idBib + "." + idLivre + "</titre></livre>");
+
         }
 
         long end = System.nanoTime();
 
         long duration = (end - start) / 1000000;
 
-        System.out.println(" * ALGO [" + algorithm + "] - average duration: " + (duration / NB_REPETITION) + " ms");
+        System.out.println(" * ALGO [" + algorithm + "]");
+        System.out.println("        - total duration: " + duration + " ms");
+        System.out.println("        - average duration: " + (duration / NB_REPETITION) + " ms");
 
         // System.out.println(response.readEntity(String.class));
     }
