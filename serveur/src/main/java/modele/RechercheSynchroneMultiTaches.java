@@ -37,6 +37,7 @@ private ExecutorService pool;
 	        	   this.pool.execute(new MyRunnable(lien, i, result, doneSignal, this, l, client));
 	           } 
 		}
+
 		try {
 			doneSignal.await();
 		} catch (InterruptedException e) {
@@ -78,8 +79,7 @@ private ExecutorService pool;
 			doneSignal.countDown();
 		}
 	}
-	
-	
+
 
 	@Override
 	public NomAlgorithme nom() {

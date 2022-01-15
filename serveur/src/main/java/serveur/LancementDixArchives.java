@@ -18,6 +18,8 @@ import modele.ImplemLivre;
 
 public class LancementDixArchives {
 
+	public static final int NB_LIVRES = 30000;
+
 	public static void main(String[] args) {
 		
 		ResourceConfig config = new ServiceBibliotheque();
@@ -34,9 +36,8 @@ public class LancementDixArchives {
 	}
 
 	private static void ajouterLivres(HyperLien<Bibliotheque> h, int v) {
-		Archive b = 
-				LienVersRessource.proxy(Orchestrateur.clientJAXRS(), h, Bibliotheque.class);
-		for(int i = 0; i < 10; i++){
+		Archive b = LienVersRessource.proxy(Orchestrateur.clientJAXRS(), h, Bibliotheque.class);
+		for(int i = 0; i < NB_LIVRES; i++){
 			b.ajouter(new ImplemLivre("Services" + v + "." + i));
 		}
 	}

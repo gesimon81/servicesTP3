@@ -9,6 +9,7 @@ public class JAXRS {
 	public static final String CHEMIN_BIBLIO = "bibliotheque";
 	public static final String CLE_TITRE = "titre";
 	public static final String SOUSCHEMIN_CATALOGUE = "catalogue";
+	public static final String SOUSCHEMIN_COMPTER = "compter";
 	public static final String SOUSCHEMIN_ASYNC = "async";
 	public static final String SOUSCHEMIN_LIVRE = "livre";
 	public static final String SOUSCHEMIN_TITRE = "titre";

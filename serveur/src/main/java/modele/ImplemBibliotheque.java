@@ -62,7 +62,7 @@ public class ImplemBibliotheque implements Bibliotheque {
 
 	@Override
 	public Livre getRepresentation(IdentifiantLivre id) {
-		System.out.println("représentation");
+		System.out.println("reprï¿½sentation");
 		return catalogue.get(id);
 	}
 	
@@ -102,6 +102,12 @@ public class ImplemBibliotheque implements Bibliotheque {
 					.created(adresse).build().getLocation()));
 		}
 		return new HyperLiens<Livre>(catalogueRef);
+	}
+
+	@Override
+	public Integer compterLivres() {
+		Set<IdentifiantLivre> ids = catalogue.keySet();
+		return ids.size();
 	}
 
 }
