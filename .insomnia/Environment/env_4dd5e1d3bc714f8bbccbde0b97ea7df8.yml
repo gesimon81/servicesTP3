@@ -1,18 +1,18 @@
-_id: env_8bfe8c0f493b41f18c82949609b51c12
+_id: env_4dd5e1d3bc714f8bbccbde0b97ea7df8
 type: Environment
 parentId: env_e146ec3fc4f51103cb5d01f24ab03fa9e8b2a8da
-modified: 1641747814662
-created: 1641746930340
-name: TP3 - recherche async seq
+modified: 1641748646206
+created: 1641748634030
+name: TP3 - recherche sync multi
 data:
   bibliotheque-id: bib0
   livre-id: "0"
-  algo-id: recherche async seq
+  algo-id: recherche sync multi
 dataPropertyOrder:
   "&":
     - bibliotheque-id
     - livre-id
     - algo-id
-color: "#7d69cb"
+color: null
 isPrivate: false
-metaSortKey: 1641743919165
+metaSortKey: 1641748634030
