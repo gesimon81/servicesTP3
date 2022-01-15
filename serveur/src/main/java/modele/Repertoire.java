@@ -1,8 +1,5 @@
 package modele;
 
-import static configuration.JAXRS.SOUSCHEMIN_CATALOGUE;
-import static configuration.JAXRS.TYPE_MEDIA;
-
 import java.util.Optional;
 import java.util.concurrent.Future;
 
@@ -18,6 +15,8 @@ import configuration.JAXRS;
 import infrastructure.jaxrs.HyperLien;
 import infrastructure.jaxrs.HyperLiens;
 import infrastructure.jaxrs.annotations.ReponsesPUTOption;
+
+import static configuration.JAXRS.*;
 
 public interface Repertoire {
 	/**

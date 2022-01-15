@@ -37,6 +37,7 @@ private ExecutorService pool;
 	              
 	           } 
 		}
+
 		try {
 			doneSignal.await();
 		} catch (InterruptedException e) {
@@ -46,11 +47,10 @@ private ExecutorService pool;
 		return result.get();
 	}
 	
-	Runnable myRunnable =
-		    new Runnable(){
-		        public void run(){
-		            System.out.println("Runnable running");
-		        }
+	Runnable myRunnable = new Runnable() {
+		public void run(){
+			System.out.println("Runnable running");
+		}
 	};
 	
 

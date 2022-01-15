@@ -2,6 +2,7 @@ package modele;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.Future;
@@ -43,7 +44,6 @@ public class ImplemPortail implements Portail {
 		tableAlgos.put(this.algoRecherche.nom(), this.algoRecherche);
 
 		AlgorithmeRecherche algo = this.algoRecherche;
-		NomAlgorithme nom = this.algoRecherche.nom();
 		/*
 		 * NomAlgorithme nom = this.algoRecherche.nom(); tableAlgos.put(nom, algo); algo
 		 * = new RechercheSynchroneMultiTaches("recherche sync multi"); nom =
@@ -54,25 +54,22 @@ public class ImplemPortail implements Portail {
 		 * tableAlgos.put(nom, algo);
 		 */
 		algo = new RechercheSynchroneSequentielle("recherche sync seq");
-		nom = algo.nom();
-		tableAlgos.put(nom, algo);
+		tableAlgos.put(algo.nom(), algo);
+
 		algo = new RechercheSynchroneMultiTaches("recherche sync multi");
-		nom = algo.nom();
-		tableAlgos.put(nom, algo);
+		tableAlgos.put(algo.nom(), algo);
 		
 		algo = new RechercheAsynchroneSequentielle("recherche async seq");
-		nom = algo.nom();
-		tableAlgos.put(nom, algo);
-		algo = new RechercheAsynchroneMultiTaches("recherche async multi");
-		nom = algo.nom();
-		tableAlgos.put(nom, algo);
-		algo = new RechercheAsynchroneStreamParallele("recherche async stream 8");
-		nom = algo.nom();
-		tableAlgos.put(nom, algo);
-		algo = new RechercheAsynchroneStreamRx("recherche async stream rx");
-		nom = algo.nom();
-		tableAlgos.put(nom, algo);
+		tableAlgos.put(algo.nom(), algo);
 
+		algo = new RechercheAsynchroneMultiTaches("recherche async multi");
+		tableAlgos.put(algo.nom(), algo);
+
+		algo = new RechercheAsynchroneStreamParallele("recherche async stream 8");
+		tableAlgos.put(algo.nom(), algo);
+
+		algo = new RechercheAsynchroneStreamRx("recherche async stream rx");
+		tableAlgos.put(algo.nom(), algo);
 	}
 
 	@Override
@@ -112,5 +109,4 @@ public class ImplemPortail implements Portail {
 			System.out.println("Conservation de l'algorithme de recherche : " + algoRecherche.nom());
 		}
 	}
-
 }
