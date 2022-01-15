@@ -34,7 +34,7 @@ private ExecutorService pool;
 
 		for (HyperLien<Bibliotheque> lien : bibliotheques) {
 	           for (int i = 0; i < 10; i++) {  
-	              
+	        	   this.pool.execute(new MyRunnable(lien, i, result, doneSignal, this, l, client));
 	           } 
 		}
 		try {
@@ -46,12 +46,39 @@ private ExecutorService pool;
 		return result.get();
 	}
 	
-	Runnable myRunnable =
-		    new Runnable(){
-		        public void run(){
-		            System.out.println("Runnable running");
-		        }
-	};
+	private class MyRunnable implements Runnable{
+
+		private HyperLien<Bibliotheque> lien;
+		private int index;
+		private AtomicReference<Optional<HyperLien<Livre>>> result;
+		private CountDownLatch doneSignal;
+		private RechercheSynchroneMultiTaches rechercheSynchroneMultiTaches;
+		private Livre l;
+		private Client client;
+		
+		MyRunnable(HyperLien<Bibliotheque> lien, int index, AtomicReference<Optional<HyperLien<Livre>>> result, CountDownLatch doneSignal, RechercheSynchroneMultiTaches rechercheSynchroneMultiTaches, Livre l, Client client){
+			this.lien = lien;
+			this.index = index;
+			this.result = result;
+			this.doneSignal = doneSignal;
+			this.rechercheSynchroneMultiTaches = rechercheSynchroneMultiTaches;
+			this.l = l;
+			this.client = client;
+		}
+		
+		@Override
+		public void run() {
+			Optional<HyperLien<Livre>> livre = rechercheSynchroneMultiTaches.rechercheSync(lien, l, client);
+			if(livre.isPresent()) {
+				result.set((livre));
+				for (int i = 0;i< doneSignal.getCount();i++) {
+					doneSignal.countDown();
+				}
+			}
+			doneSignal.countDown();
+		}
+	}
+	
 	
 
 	@Override
