@@ -165,3 +165,36 @@ Groupe TP : Geraud SIMON, Raphael PAINTER, Mael LHOUTELLIER, Simon SASSI
   </xs:complexType>
 </xs:schema>
 ```
+
+```
+=== BENCHMARKING ==============================================
+10 searchs for random books in 1000
+SYNC
+ * ALGO [recherche sync seq]
+        - total duration: 81502 ms
+        - average duration: 8150 ms
+ * ALGO [recherche sync multi]
+        - total duration: 11907 ms
+        - average duration: 1190 ms
+ * ALGO [recherche sync stream 8]
+        - total duration: 11144 ms
+        - average duration: 1114 ms
+ * ALGO [recherche sync stream rx]
+        - total duration: 13992 ms
+        - average duration: 1399 ms
+ASYNC
+ * ALGO [recherche async seq]
+        - total duration: 15391 ms
+        - average duration: 1539 ms
+ * ALGO [recherche async multi]
+        - total duration: 3507 ms
+        - average duration: 350 ms
+ * ALGO [recherche async stream 8]
+        - total duration: 15149 ms
+        - average duration: 1514 ms
+ * ALGO [recherche async stream rx]
+        - total duration: 3795 ms
+        - average duration: 379 ms
+
+Process finished with exit code 0
+```
