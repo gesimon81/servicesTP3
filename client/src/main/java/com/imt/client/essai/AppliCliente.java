@@ -19,6 +19,8 @@ public class AppliCliente {
     public static final String[] ALGOS = {
             "recherche sync seq",
             "recherche sync multi",
+            "recherche sync stream rx",
+            "recherche sync stream 8",
             "recherche async seq",
             "recherche async multi",
             "recherche async stream 8",
