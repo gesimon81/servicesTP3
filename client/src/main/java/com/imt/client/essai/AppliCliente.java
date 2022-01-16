@@ -15,12 +15,12 @@ import java.util.Random;
 
 public class AppliCliente {
 
-    public static final String BASE_URL = "http://localhost:8081";
+    public static final String BASE_URL = "http://localhost:8081/PortailServeur2/portail";
     public static final String[] ALGOS = {
             "recherche sync seq",
             "recherche sync multi",
-            "recherche sync stream rx",
             "recherche sync stream 8",
+            "recherche sync stream rx",
             "recherche async seq",
             "recherche async multi",
             "recherche async stream 8",
@@ -28,7 +28,7 @@ public class AppliCliente {
     };
 
     public static final int NB_REPETITION = 10;
-    public static final int NB_LIVRES = 10000; // TODO: appeler bib0/bibliotheque/compter quand fonctionnel
+    public static final int NB_LIVRES = 1000; // TODO: appeler bib0/bibliotheque/compter quand fonctionnel
     public static final int NB_BIBLIOTHEQUES = 10;
 
     public static Client clientJAXRS() {
@@ -39,7 +39,7 @@ public class AppliCliente {
     public static ArrayList<String> getCatalogues() {
         ArrayList<String> catalogues = new ArrayList<String>();
 
-        WebTarget target = clientJAXRS().target(BASE_URL + "/PortailServeur2/portail/catalogue");
+        WebTarget target = clientJAXRS().target(BASE_URL + "/catalogue");
         Response response = target.request().get();
 
         System.out.println(response);
@@ -54,7 +54,7 @@ public class AppliCliente {
     public static void TestAlgorithm(String algorithm) {
 
         // Swap research algorithm
-        Response update = clientJAXRS().target(BASE_URL + "/PortailServeur2/portail/admin/recherche").request().put(Entity.xml("<algo><nom>" + algorithm + "</nom></algo>"));
+        Response update = clientJAXRS().target(BASE_URL + "/admin/recherche").request().put(Entity.xml("<algo><nom>" + algorithm + "</nom></algo>"));
 
         long start = System.nanoTime();
 
@@ -62,9 +62,8 @@ public class AppliCliente {
         for (int i = 0; i < NB_REPETITION; i++) {
             long idBib = Math.round(Math.random() * NB_BIBLIOTHEQUES);
             long idLivre = Math.round(Math.random() * NB_LIVRES);
-            Response response = clientJAXRS().target("http://localhost:8090/PortailServeur2/portail/").request().put(Entity.xml("<livre><titre>Services" + idBib + "." + idLivre + "</titre></livre>"));
-            System.out.println(response + " " + "<livre><titre>Services" + idBib + "." + idLivre + "</titre></livre>");
-
+            Response response = clientJAXRS().target(BASE_URL).request().put(Entity.xml("<livre><titre>Services" + idBib + "." + idLivre + "</titre></livre>"));
+            //System.out.println(response + " " + "<livre><titre>Services" + idBib + "." + idLivre + "</titre></livre>");
         }
 
         long end = System.nanoTime();
@@ -83,7 +82,8 @@ public class AppliCliente {
         ArrayList<String> catalogues = getCatalogues();
 
         System.out.println("=== BENCHMARKING ==============================================");
-        System.out.println(NB_REPETITION + " searchs for randoms books in " + NB_LIVRES);
+        System.out.println(NB_REPETITION + " searchs for random books in " + NB_LIVRES);
+        System.out.println("pas de s aux adjectifs en anglais MAEL :ß");
 
         for (String algo : ALGOS) {
             TestAlgorithm(algo);
