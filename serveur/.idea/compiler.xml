@@ -8,7 +8,6 @@
         <outputRelativeToContentRoot value="true" />
         <module name="Bibliotheque_S" />
         <module name="Bibliotheque_C" />
-        <module name="serveur" />
       </profile>
     </annotationProcessing>
   </component>

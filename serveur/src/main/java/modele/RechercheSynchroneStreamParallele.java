@@ -6,7 +6,6 @@ import java.util.Optional;
 import javax.ws.rs.client.Client;
 
 import infrastructure.jaxrs.HyperLien;
-import infrastructure.jaxrs.Outils;
 
 public class RechercheSynchroneStreamParallele extends RechercheSynchroneAbstraite{
 	private NomAlgorithme nomAlgo;
