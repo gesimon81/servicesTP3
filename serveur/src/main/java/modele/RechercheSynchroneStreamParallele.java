@@ -8,17 +8,16 @@ import javax.ws.rs.client.Client;
 import infrastructure.jaxrs.HyperLien;
 
 public class RechercheSynchroneStreamParallele extends RechercheSynchroneAbstraite{
+	private NomAlgorithme nomAlgo;
 
 	@Override
 	public Optional<HyperLien<Livre>> chercher(Livre l, List<HyperLien<Bibliotheque>> bibliotheques, Client client) {
-		// TODO Auto-generated method stub
-		return null;
+		return bibliotheques.parallelStream().map((b) -> super.rechercheSync(b, l, client)).filter(Optional::isPresent).findAny().orElse(Optional.empty());
 	}
 
 	@Override
 	public NomAlgorithme nom() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.nomAlgo;
 	}
 
 	
