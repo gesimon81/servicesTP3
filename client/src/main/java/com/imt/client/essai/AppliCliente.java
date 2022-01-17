@@ -83,7 +83,6 @@ public class AppliCliente {
 
         System.out.println("=== BENCHMARKING ==============================================");
         System.out.println(NB_REPETITION + " searchs for random books in " + NB_LIVRES);
-        System.out.println("pas de s aux adjectifs en anglais MAEL :ß");
 
         for (String algo : ALGOS) {
             TestAlgorithm(algo);

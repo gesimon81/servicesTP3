@@ -1,0 +1,29 @@
+_id: req_53382871442748dea693ca5387f34235
+type: Request
+parentId: fld_ea128d0c80a347c4bd69eba418d39f97
+modified: 1641748676233
+created: 1641734846129
+url: http://localhost:8081/PortailServeur2/portail
+name: Chercher
+description: ""
+method: PUT
+body:
+  mimeType: application/xml
+  text: |-
+    <livre>
+    	<titre>Services0.5</titre>
+    </livre>
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/xml
+    id: pair_bf943fef9bbf452d966e24931bc64b08
+authentication: {}
+metaSortKey: -1641735041086
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global
